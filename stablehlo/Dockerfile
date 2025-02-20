@@ -36,6 +36,7 @@ WORKDIR /stablehlo/build
 RUN ninja check-stablehlo-tests
 RUN ninja install
 
+# Stage 2: Packaging
 FROM ubuntu:20.04
 COPY --from=llvm-builder /stablehlo/build/bin /usr/bin
 COPY --from=llvm-builder /usr/local/lib /usr/local/lib
